@@ -18,8 +18,11 @@ namespace ZiSai.RecordServer.Models
         public string k_key { get; set; }
         public System.DateTime k_createDate { get; set; }
         public string k_createSource { get; set; }
-        public double k_day { get; set; }
+        public double k_days { get; set; }
         public System.DateTime k_effectiveDate { get; set; }
         public bool k_use { get; set; }
+        public int k_useMenber { get; set; }
+    
+        public virtual Record_Memberinfo Record_Memberinfo { get; set; }
     }
 }

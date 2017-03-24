@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="17cd99f591ea44b6b10fc4cacad24e84" Name="Diagram1">
-        <EntityTypeShape EntityType="RecordModel.Record_key" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RecordModel.Record_Memberinfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecordModel.Record_key" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="RecordModel.Record_Memberinfo" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="RecordModel.FK_Record_key_Record_Memberinfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

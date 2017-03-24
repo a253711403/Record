@@ -11,7 +11,35 @@ namespace ZiSai.RecordServer
     [ServiceContract]
     public interface IRecordMember
     {
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="uid">用户名</param>
+        /// <param name="pwd">密码</param>
+        /// <returns></returns>
         [OperationContract]
-        string UserLogin(string timestamp, string sign, string uid, string pwd);
+        string UserLogin(string uid, string pwd);
+        [OperationContract]
+        string SignIn(string uid, string pwd);
+        /// <summary>
+        /// 添加激活码
+        /// </summary>
+        /// <param name="count">数量</param>
+        /// <param name="prefix">前缀</param>
+        /// <param name="days">激活天数</param>
+        /// <param name="createSouse">创建来源</param>
+        /// <param name="effectiveDate">过期时间</param>
+        /// <returns></returns>
+        [OperationContract]
+        string AddKeys(int count ,string prefix,double days,string createSouse ,DateTime effectiveDate);
+        /// <summary>
+        /// 开通会员
+        /// </summary>
+        /// <param name="uid"></param>
+        /// <param name="createSouse">激活方式</param>
+        /// <param name="days">天数</param>
+        /// <returns></returns>
+        [OperationContract]
+        string OpenMenber(string uid ,string createSouse,double days );
     }
 }

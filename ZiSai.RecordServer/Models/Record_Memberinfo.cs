@@ -14,6 +14,12 @@ namespace ZiSai.RecordServer.Models
     
     public partial class Record_Memberinfo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Record_Memberinfo()
+        {
+            this.Record_key = new HashSet<Record_key>();
+        }
+    
         public int ME_ID { get; set; }
         public string ME_NAME { get; set; }
         public string ME_PWD { get; set; }
@@ -31,5 +37,8 @@ namespace ZiSai.RecordServer.Models
         public Nullable<bool> ME_Login { get; set; }
         public string ME_Activation { get; set; }
         public Nullable<System.DateTime> ME_ActivationTime { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Record_key> Record_key { get; set; }
     }
 }
