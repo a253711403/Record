@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RecordModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Record_key">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="k_key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="k_createDate" Type="datetime" Nullable="false" />
+          <Property Name="k_createSource" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="k_day" Type="float" Nullable="false" />
+          <Property Name="k_effectiveDate" Type="datetime" Nullable="false" />
+          <Property Name="k_use" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record_Memberinfo">
+          <Key>
+            <PropertyRef Name="ME_ID" />
+          </Key>
+          <Property Name="ME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ME_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ME_PWD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ME_STATUS" Type="int" />
+          <Property Name="ME_CU_STATUS" Type="int" />
+          <Property Name="ME_TYPE" Type="int" />
+          <Property Name="ME_GR_ID" Type="int" />
+          <Property Name="ME_PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="ME_QQ" Type="varchar" MaxLength="50" />
+          <Property Name="ME_SEX" Type="varchar" MaxLength="50" />
+          <Property Name="ME_BIRTHDAY" Type="datetime" />
+          <Property Name="ME_ADD_TIME" Type="datetime" Nullable="false" />
+          <Property Name="ME_UPDATE_TIME" Type="datetime" />
+          <Property Name="ME_ENTTIME" Type="datetime" />
+          <Property Name="ME_Login" Type="bit" />
+          <Property Name="ME_Activation" Type="varchar" MaxLength="50" />
+          <Property Name="ME_ActivationTime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="RecordModelStoreContainer">
+          <EntitySet Name="Record_key" EntityType="Self.Record_key" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record_Memberinfo" EntityType="Self.Record_Memberinfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecordModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Record_key">
+          <Key>
+            <PropertyRef Name="k_id" />
+          </Key>
+          <Property Name="k_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="k_key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="k_createDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="k_createSource" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="k_day" Type="Double" Nullable="false" />
+          <Property Name="k_effectiveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="k_use" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record_Memberinfo">
+          <Key>
+            <PropertyRef Name="ME_ID" />
+          </Key>
+          <Property Name="ME_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ME_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ME_PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ME_STATUS" Type="Int32" />
+          <Property Name="ME_CU_STATUS" Type="Int32" />
+          <Property Name="ME_TYPE" Type="Int32" />
+          <Property Name="ME_GR_ID" Type="Int32" />
+          <Property Name="ME_PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ME_QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ME_SEX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ME_BIRTHDAY" Type="DateTime" Precision="3" />
+          <Property Name="ME_ADD_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ME_UPDATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="ME_ENTTIME" Type="DateTime" Precision="3" />
+          <Property Name="ME_Login" Type="Boolean" />
+          <Property Name="ME_Activation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ME_ActivationTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="RecordEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Record_key" EntityType="Self.Record_key" />
+          <EntitySet Name="Record_Memberinfo" EntityType="Self.Record_Memberinfo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RecordModelStoreContainer" CdmEntityContainer="RecordEntities">
+          <EntitySetMapping Name="Record_key">
+            <EntityTypeMapping TypeName="RecordModel.Record_key">
+              <MappingFragment StoreEntitySet="Record_key">
+                <ScalarProperty Name="k_id" ColumnName="k_id" />
+                <ScalarProperty Name="k_key" ColumnName="k_key" />
+                <ScalarProperty Name="k_createDate" ColumnName="k_createDate" />
+                <ScalarProperty Name="k_createSource" ColumnName="k_createSource" />
+                <ScalarProperty Name="k_day" ColumnName="k_day" />
+                <ScalarProperty Name="k_effectiveDate" ColumnName="k_effectiveDate" />
+                <ScalarProperty Name="k_use" ColumnName="k_use" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record_Memberinfo">
+            <EntityTypeMapping TypeName="RecordModel.Record_Memberinfo">
+              <MappingFragment StoreEntitySet="Record_Memberinfo">
+                <ScalarProperty Name="ME_ID" ColumnName="ME_ID" />
+                <ScalarProperty Name="ME_NAME" ColumnName="ME_NAME" />
+                <ScalarProperty Name="ME_PWD" ColumnName="ME_PWD" />
+                <ScalarProperty Name="ME_STATUS" ColumnName="ME_STATUS" />
+                <ScalarProperty Name="ME_CU_STATUS" ColumnName="ME_CU_STATUS" />
+                <ScalarProperty Name="ME_TYPE" ColumnName="ME_TYPE" />
+                <ScalarProperty Name="ME_GR_ID" ColumnName="ME_GR_ID" />
+                <ScalarProperty Name="ME_PHONE" ColumnName="ME_PHONE" />
+                <ScalarProperty Name="ME_QQ" ColumnName="ME_QQ" />
+                <ScalarProperty Name="ME_SEX" ColumnName="ME_SEX" />
+                <ScalarProperty Name="ME_BIRTHDAY" ColumnName="ME_BIRTHDAY" />
+                <ScalarProperty Name="ME_ADD_TIME" ColumnName="ME_ADD_TIME" />
+                <ScalarProperty Name="ME_UPDATE_TIME" ColumnName="ME_UPDATE_TIME" />
+                <ScalarProperty Name="ME_ENTTIME" ColumnName="ME_ENTTIME" />
+                <ScalarProperty Name="ME_Login" ColumnName="ME_Login" />
+                <ScalarProperty Name="ME_Activation" ColumnName="ME_Activation" />
+                <ScalarProperty Name="ME_ActivationTime" ColumnName="ME_ActivationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
