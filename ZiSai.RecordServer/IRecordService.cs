@@ -7,9 +7,9 @@ using System.Text;
 
 namespace ZiSai.RecordServer
 {
-    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的接口名“IRecordMember”。
+    // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的接口名“IRecordService”。
     [ServiceContract]
-    public interface IRecordMember
+    public interface IRecordService
     {
         /// <summary>
         /// 用户登录
@@ -31,7 +31,7 @@ namespace ZiSai.RecordServer
         /// <param name="effectiveDate">过期时间</param>
         /// <returns></returns>
         [OperationContract]
-        string AddKeys(int count ,string prefix,double days,string createSouse ,DateTime effectiveDate);
+        string AddKeys(int count, string prefix, double days, string createSouse, DateTime effectiveDate);
         /// <summary>
         /// 开通会员
         /// </summary>
@@ -40,6 +40,6 @@ namespace ZiSai.RecordServer
         /// <param name="days">天数</param>
         /// <returns></returns>
         [OperationContract]
-        string ActivationMenber(string uid ,string createSouse,double days );
+        string ActivationMenber(string uid, string createSouse, double days);
     }
 }

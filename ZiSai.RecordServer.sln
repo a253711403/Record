@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZiSai.RecordServer", "ZiSai.RecordServer\ZiSai.RecordServer.csproj", "{FFEC9238-7D69-4C3A-BA4A-CC294F7D9B4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "actionAPP", "actionAPP\actionAPP.csproj", "{3E523ABB-2191-4914-8CA4-9FA09980E264}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FFEC9238-7D69-4C3A-BA4A-CC294F7D9B4B} = {FFEC9238-7D69-4C3A-BA4A-CC294F7D9B4B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.Security;
 using ZiSai.RecordServer.Models;
@@ -64,6 +66,26 @@ namespace ZiSai.RecordServer.DAL
             return ToJsonByJsonConvert.ObjToJson(json);
         }
 
+        public string ActivationMenber(string uid, string createSouse, double days)
+        {
+            string code = "0000";
+            string msg = "调用成功";
+            string info = "成功续费，到期时间{0}";
+
+            Record_Memberinfo mod = Db.Record_Memberinfo.Where(m=>m.ME_NAME ==uid).First();
+            mod.ME_Activation = createSouse;
+            mod.ME_ENTTIME = DateTime.Now.AddDays(days);
+            Db.SaveChanges();
+            var json = new
+            {
+                code = code,
+                msg = msg,
+                info = string.Format(info,mod.ME_ENTTIME.Value.ToString("yyyy年MM月DD日 HH时mm分ss秒"))
+            };
+
+            return ToJsonByJsonConvert.ObjToJson(json);
+        }
+
         public string UserLogin(string uid, string pwd)
         {
             string code = "0000";
@@ -91,7 +113,9 @@ namespace ZiSai.RecordServer.DAL
 
             Record_Memberinfo mod = new Models.Record_Memberinfo();
             mod.ME_NAME = uid;
-            mod.ME_PWD = pwd;
+            mod.ME_PWD =GetMD5(pwd);
+            mod.ME_ADD_TIME = DateTime.Now;
+            mod.ME_Activation = ClientIpAndPort();
             Db.Record_Memberinfo.Add(mod);
             Db.SaveChanges();
             var json = new
@@ -106,6 +130,13 @@ namespace ZiSai.RecordServer.DAL
         public static string GetMD5(string str)
         {
             return FormsAuthentication.HashPasswordForStoringInConfigFile(str, "md5").ToUpper();
+        }
+        public string ClientIpAndPort()
+        {
+            OperationContext context = OperationContext.Current;
+            MessageProperties properties = context.IncomingMessageProperties;
+            RemoteEndpointMessageProperty endpoint = properties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+            return endpoint.Address + ":" + endpoint.Port.ToString();
         }
     }
 }

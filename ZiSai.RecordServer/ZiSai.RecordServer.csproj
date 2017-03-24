@@ -154,12 +154,13 @@
       <DependentUpon>Record.edmx</DependentUpon>
       <LastGenOutput>Record.cs</LastGenOutput>
     </Content>
-    <Content Include="RMServic.svc" />
+    <Content Include="RecordService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\RecordDAL.cs" />
     <Compile Include="IRecordMember.cs" />
+    <Compile Include="IRecordService.cs" />
     <Compile Include="Models\Record.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,8 +183,8 @@
       <DependentUpon>Record.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ToJsonByJsonConvert.cs" />
-    <Compile Include="RMServic.svc.cs">
-      <DependentUpon>RMServic.svc</DependentUpon>
+    <Compile Include="RecordService.svc.cs">
+      <DependentUpon>RecordService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

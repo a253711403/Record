@@ -16,5 +16,19 @@ namespace actionAPP
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ServiceReference.RecordServiceClient db = new ServiceReference.RecordServiceClient();
+                MessageBox.Show(db.SignIn(this.textBox1.Text, this.textBox2.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
     }
 }
